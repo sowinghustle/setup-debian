@@ -1,0 +1,18 @@
+curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
+
+# ----------------------------------------------------------------------
+# RESTART THE TERMINAL, AND AFTER THAT, RUN THE FOLLOWING LINES ->
+# ----------------------------------------------------------------------
+
+spicetify backup apply
+spicetify apply
+
+
+git clone --depth=1 https://github.com/spicetify/spicetify-themes.git 
+
+cd spicetify-themes
+cp -r * ~/.config/spicetify/Themes
+
+spicetify config current_theme Dribbblish
+spicetify config color_scheme catppuccin-macchiato
+spicetify apply

@@ -1,0 +1,110 @@
+# First setup essertials
+
+# ------------------------------------
+# Install updates:
+# ------------------------------------
+
+sudo apt update && sudo apt dist-upgrade -y
+
+
+# ------------------------------------
+# Install dev tools and some themes:
+# ------------------------------------
+
+sudo apt install -y \
+curl \
+font-manager \
+apache2-utils \
+chromium-browser \
+gnome-tweaks \
+gnome-shell-extensions \
+python3-pip \
+libgconf-2-4 \
+arc-theme \
+tilix \
+python3-pygments
+
+
+# ------------------------------------
+# Add Flathub.org as a Flatpak repo
+# ------------------------------------
+
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+
+# ------------------------------------
+# Install Visual Studio Code
+# ------------------------------------
+
+sudo apt-get install wget gpg
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+rm -f packages.microsoft.gpg
+sudo apt install apt-transport-https
+sudo apt update
+sudo apt install code
+
+
+# ------------------------------------
+# Install NodeJS:
+# ------------------------------------
+
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
+echo "fs.inotify.max_user_watches=10000000" | sudo tee -a /etc/sysctl.conf
+node --version
+sudo npm install -g nodemon
+# ------------------------------------
+# React Native:
+# ------------------------------------
+npx expo install react-native-web react-dom @expo/metro-runtime
+
+
+# ------------------------------------
+# Install .NET Core and turn off .NET Core telemetry:
+# ------------------------------------
+
+echo "export DOTNET_CLI_TELEMETRY_OPTOUT=true" >> ~/.profile
+sudo apt update && sudo apt install dotnet-sdk-8.0 -y
+dotnet --version
+
+
+# ------------------------------------
+# Install GoLang 1.22.1:
+# ------------------------------------
+
+curl -OL https://golang.org/dl/go1.22.1.linux-amd64.tar.gz
+sha256sum go1.22.1.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz
+echo "export PATH=$PATH:$(go env GOPATH)/bin:/usr/local/go/bin" >> ~/.profile
+source ~/.profile
+
+
+# ------------------------------------
+# Install VLC:
+# ------------------------------------
+
+sudo apt install -y vlc
+sudo apt install -y libavcodec-extra libdvd-pkg
+sudo dpkg-reconfigure libdvd-pkg
+
+
+# -----------------------
+# Install Spotify
+# -----------------------
+
+curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt-get update && sudo apt-get install spotify-client
+sudo chmod a+wr /usr/share/spotify
+sudo chmod a+wr /usr/share/spotify/Apps -R
+
+# --------------------------------------
+# DOCKER INSTALL
+# --------------------------------------
+
+#Download the .deb package from https://docs.docker.com/desktop/install/ubuntu/.
+#Run sudo apt-get install ./docker-desktop-<version>-<arch>.deb
+#Either open the Docker Desktop app that was installed, or run systemctl --user start docker-desktop
