@@ -1,1 +1,1 @@
-curl -s https://github.com/SowingHustle/setup-debian/ | bash
+curl -s https://raw.githubusercontent.com/sowinghustle/setup-debian/master/setup.sh | bash

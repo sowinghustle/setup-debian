@@ -104,6 +104,7 @@ neofetch
 EOF
 fi
 
+sudo cp ./setup.sh /bin  
 echo "Configurações do.zshrc atualizadas com sucesso!"
 
 
