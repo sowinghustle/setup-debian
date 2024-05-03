@@ -106,5 +106,4 @@ fi
 
 echo "Configurações do.zshrc atualizadas com sucesso!"
 
-
-
+sudo curl -o ./cleanupAndFirmware https://raw.githubusercontent.com/sowinghustle/setup-debian/master/cleanupAndFirmware

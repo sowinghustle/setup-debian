@@ -1,8 +1,0 @@
-sudo apt autoremove -y
-sudo apt autoclean -y
-
-sudo fwupdmgr get-devices
-sudo fwupdmgr get-updates
-sudo fwupdmgr update
-
-sudo reboot now
