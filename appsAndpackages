@@ -108,3 +108,14 @@ sudo chmod a+wr /usr/share/spotify/Apps -R
 #Download the .deb package from https://docs.docker.com/desktop/install/ubuntu/.
 #Run sudo apt-get install ./docker-desktop-<version>-<arch>.deb
 #Either open the Docker Desktop app that was installed, or run systemctl --user start docker-desktop
+
+
+# --------------------------------------
+# THORIUM INSTALL
+# --------------------------------------
+
+wget https://dl.thorium.rocks/debian/dists/stable/thorium.list
+sudo mv thorium.list /etc/apt/sources.list.d/
+sudo apt update && sudo apt install thorium-browser -y
+
+
